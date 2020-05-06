@@ -12,8 +12,8 @@
   grid-template-rows: 40px repeat(8, 70px) 40px;
   grid-auto-flow: row;
 }
-.board-inner{
-display: grid;
+.board-inner {
+  display: grid;
   grid-gap: 0;
   grid-template-columns: repeat(8, auto);
   grid-template-rows: auto;
@@ -28,16 +28,18 @@ display: grid;
   color: #000;
   text-align: center;
 }
+
 .box-inner{
   text-align: center;
   align-self: center;
 }
-.top,
-.bottom{
+
+.top,.bottom {
   display: grid;
   align-items: stretch;
   background-color: #FAF0E6;
 }
+
 .top {
   grid-column-start: 1;
   grid-column-end: 9;
@@ -61,4 +63,9 @@ display: grid;
 .box:nth-child(57) ~ div:nth-child(-2n+64){
   background-color: #000000;
   color: #fff;
+}
+
+.dumb-box {
+  border: 1px red solid;
+  height: 30px;
 }
