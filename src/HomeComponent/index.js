@@ -66,24 +66,45 @@ const theme = createMuiTheme({
 })
 
 
-export default function HomeComponent() {
+export default function HomeComponent(props) {
 	const classes =  useStyles()
 	return(
 			<div>
 			<h1>
 				Chess Trekkers
 			</h1>
-			<ColorButton variant='contained' color='primary' className={classes.margin}>
+			<ColorButton
+				variant='contained' 
+				color='primary' 
+				className={classes.margin}
+				name='startGame'
+				onClick={props.openChoices}
+				>
 				Start Match
 			</ColorButton>
 			<br/>
-			<ThemeProvider theme={theme}>
-				<Button variant='contained' color='primary' className={classes.margin}>
+			<ThemeProvider 
+				theme={theme}
+				>
+				<Button 
+					variant='contained' 
+					color='primary' 
+					className={classes.margin}
+					name='highscores'
+					onClick={props.openChoices}
+					>
 					Highscores 
 				</Button>
 			</ThemeProvider>
 			<br/>
-			<BootstrapButton variant='contained' color='primary' disableRipple className={classes.margin}>
+			<BootstrapButton 
+				variant='contained' 
+				color='primary' 
+				disableRipple 
+				className={classes.margin}
+				name='aboutUs'
+				onClick={props.openChoices}
+				>
 				About Us
 			</BootstrapButton>
 

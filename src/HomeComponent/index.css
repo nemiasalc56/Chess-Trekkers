@@ -3,7 +3,7 @@ h1 {
 	padding: 80px
 }
 
-body {
+html {
 	background-image: url('./chessbackground.jpeg');
 	text-align: center;
 }
