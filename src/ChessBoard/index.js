@@ -61,7 +61,7 @@ export default class ChessBoard extends Component {
 				<div className="box"></div>
 				<div className="box"></div>
 				<div className="box"></div>
-				<div className="box"></div>
+				<div className="inbox"></div>
 
 				<div className="box"></div>
 				<div className="box"></div>
