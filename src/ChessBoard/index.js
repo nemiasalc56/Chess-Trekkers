@@ -7,9 +7,13 @@ export default class ChessBoard extends Component {
 		super(props)
 
 		this.state = { 
-			movement: null 
+			movement: []
 
 		}
+	}
+
+	onClick = (e) => {
+		console.log(e.target, 'here is the target')
 	}
 
 	render(){
@@ -31,14 +35,16 @@ export default class ChessBoard extends Component {
 				    	{boardInner.map(id => {
 				    		return <div 
 				    		key={id}
-				    		id={id}
+				    		id={'inner-sq#'+id}
 				    		className='box-inner'>{(id+10).toString(36).toUpperCase()}</div>
 				    	})}
 			    	</div>
 			  	</div>
 
 			  	{gameBoard.map(id => {
-			  		return <div key={id} className='box' id={id}></div>
+			  		return <div onClick={this.onClick} key={id} 
+			  		className='box' 
+			  		id={'sq#'+id}></div>
 			  	})}
 
 				<div className="bottom">
@@ -46,14 +52,13 @@ export default class ChessBoard extends Component {
 				    	{boardInner.map(id => {
 				    		return <div 
 				    		key={id}
-				    		id={id}
+				    		id={'inner-sq#'+id}
 				    		className='box-inner'>{(id+10).toString(36).toUpperCase()}</div>
 				    	})}
 			    	</div>
 			  	</div>
 			</div>
 	  )
-
 	}
 }
 
