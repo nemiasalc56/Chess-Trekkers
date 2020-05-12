@@ -39,22 +39,6 @@ export default class App extends Component {
   				aboutUsOpen: true 
   			})
   		}
-
-
-  	}
-
-  	highscores = () => {
-  		this.setState({
-  			homeOpen: false,
-  			highscores: true
-  		})
-  	}
-
-  	aboutUs = () => {
-  		this.setState({
-  			homeOpen: false,
-  			aboutUs: true
-  		})
   	}
 
   render(){
