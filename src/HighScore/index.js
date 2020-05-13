@@ -15,6 +15,10 @@ class HighScore extends Component {
 	}
 
 	componentDidMount() {
+		this.getScores("all")
+	}
+
+	getScores = (name) => {
 
 		const scores = [
 			{	
@@ -46,18 +50,97 @@ class HighScore extends Component {
 				rank: 3,
 				difficulty: "easy",
 				date: "May 05, 2020"
+			},
+			{	
+				id: 4,
+				owner: {
+					username: "James"
+				},
+				high_score: 10,
+				rank: 2,
+				difficulty: "intermediate",
+				date: "May 05, 2020"
+			},
+			{
+				id: 5,
+				owner: {
+					username: "Tom"
+				},
+				high_score: 32,
+				rank: 1,
+				difficulty: "hard",
+				date: "May 05, 2020"
+			},
+			{
+				id: 6,
+				owner: {
+					username: "Tim"
+				},
+				high_score: 48,
+				rank: 3,
+				difficulty: "hard",
+				date: "May 05, 2020"
 			}
 		]
 
-		this.setState({
-			scores: scores,
-			scoreListOpen: true
-		})
+		// we need to check if the parameter is = to all, easy, intermediate or hard
+		if(name === "all") {
+			this.setState({
+				scores: scores,
+				scoreListOpen: true
+			})
+		} else if(name === "easy") {
+			const easyScores = []
+
+			for(let i = 0; i < scores.length; i++) {
+
+				if(scores[i].difficulty === "easy") {
+					// console.log(scores[i]);
+					easyScores.push(scores[i])
+				}
+			}
+			// 
+			this.setState({
+				scores: easyScores
+			})
+		} else if(name === "intermediate") {
+			const interScores = []
+
+			for(let i = 0; i < scores.length; i++) {
+
+				if(scores[i].difficulty === "intermediate") {
+					// console.log(scores[i]);
+					interScores.push(scores[i])
+				}
+			}
+			// 
+			this.setState({
+				scores: interScores
+			})
+		} else if(name === "hard") {
+			const hardScores = []
+
+			for(let i = 0; i < scores.length; i++) {
+
+				if(scores[i].difficulty === "hard") {
+					// console.log(scores[i]);
+					hardScores.push(scores[i])
+				}
+			}
+			// 
+			this.setState({
+				scores: hardScores
+			})
+		}
+
 
 	}
 
+
+	 // this method will allow us to filter the scores (all, easy, intermediate, hard)
 	filterScores = (e) => {
-		console.log(e.target.name)
+
+		this.getScores(e.target.name)
 	}
 
 
@@ -115,7 +198,7 @@ class HighScore extends Component {
 						<input
 							type="checkbox"
 							name="hard"
-							onChange={this.filterScoresd}
+							onChange={this.filterScores}
 						/>
 					</div>
 				</div>
