@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import ScoreList from './ScoreList'
 import './HighScore.css'
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+
 
 
 
@@ -10,7 +13,8 @@ class HighScore extends Component {
 
 		this.state = {
 			scores:'',
-			scoreListOpen: false
+			scoreListOpen: false,
+			showing: ''
 		}
 	}
 
@@ -87,7 +91,8 @@ class HighScore extends Component {
 		if(name === "all") {
 			this.setState({
 				scores: scores,
-				scoreListOpen: true
+				scoreListOpen: true,
+				showing: "all"
 			})
 		} else if(name === "easy") {
 			const easyScores = []
@@ -101,7 +106,9 @@ class HighScore extends Component {
 			}
 			// 
 			this.setState({
-				scores: easyScores
+				scores: easyScores,
+				scoreListOpen: true,
+				showing: "easy"
 			})
 		} else if(name === "intermediate") {
 			const interScores = []
@@ -115,7 +122,9 @@ class HighScore extends Component {
 			}
 			// 
 			this.setState({
-				scores: interScores
+				scores: interScores,
+				scoreListOpen: true,
+				showing: "intermediate"
 			})
 		} else if(name === "hard") {
 			const hardScores = []
@@ -129,7 +138,9 @@ class HighScore extends Component {
 			}
 			// 
 			this.setState({
-				scores: hardScores
+				scores: hardScores,
+				scoreListOpen: true,
+				showing: "hard"
 			})
 		}
 
@@ -140,7 +151,7 @@ class HighScore extends Component {
 	 // this method will allow us to filter the scores (all, easy, intermediate, hard)
 	filterScores = (e) => {
 
-		this.getScores(e.target.name)
+		this.getScores(e.target.value)
 	}
 
 
@@ -209,6 +220,18 @@ class HighScore extends Component {
 					: null
 					}
 				</div>
+
+				<Select
+		        	labelId="demo-simple-select-label"
+		          	id="demo-simple-select"
+		          	value={this.state.showing}
+		          	onChange={this.filterScores}
+		        >
+					<MenuItem value="all">All</MenuItem>
+					<MenuItem value="easy">Easy</MenuItem>
+					<MenuItem value="intermediate">Intermediate</MenuItem>
+					<MenuItem value="hard">Hard</MenuItem>
+				</Select>
 				
 			</div>
 			)
