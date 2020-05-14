@@ -1,15 +1,9 @@
 import React, { Component } from 'react'
 import ScoreList from './ScoreList'
+import SearchForm from './SearchForm'
 import './HighScore.css'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles } from '@material-ui/core/styles';
-
 
 
 
@@ -154,17 +148,13 @@ class HighScore extends Component {
 
 	}
 
-
 	 // this method will allow us to filter the scores (all, easy, intermediate, hard)
 	filterScores = (e) => {
 
 		this.getScores(e.target.value)
 	}
 
-	// search method
-	search = (name) => {
-		console.log("user is trying to search", name);
-	}
+
 
 	render() {
 
@@ -179,16 +169,7 @@ class HighScore extends Component {
 					
 				</div>
 
-				<form>
-					<input 
-						type="text"
-						value={this.state.search}
-						placeholder="Search"
-						onChange={this.search}
-						name="search"/>
-
-					<button>Search</button>
-				</form>
+				<SearchForm />
 
 				<Select
 		        	labelId="demo-simple-select-label"
