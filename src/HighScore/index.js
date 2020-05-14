@@ -143,8 +143,6 @@ class HighScore extends Component {
 				showing: "hard"
 			})
 		}
-
-
 	}
 
 	 // this method will allow us to filter the scores (all, easy, intermediate, hard)
@@ -155,7 +153,94 @@ class HighScore extends Component {
 
 	// search method
 	search = (name) => {
-		console.log("user is trying to search");
+
+		// we will replace this with the fetch calls to the backend
+		const scores = [
+			{	
+				id: 1,
+				owner: {
+					username: "frank"
+				},
+				high_score: 10,
+				rank: 2,
+				difficulty: "easy",
+				date: "May 05, 2020"
+			},
+			{
+				id: 2,
+				owner: {
+					username: "mike"
+				},
+				high_score: 8,
+				rank: 1,
+				difficulty: "easy",
+				date: "May 05, 2020"
+			},
+			{
+				id: 3,
+				owner: {
+					username: "josh"
+				},
+				high_score: 5,
+				rank: 3,
+				difficulty: "easy",
+				date: "May 05, 2020"
+			},
+			{	
+				id: 4,
+				owner: {
+					username: "James"
+				},
+				high_score: 10,
+				rank: 2,
+				difficulty: "intermediate",
+				date: "May 05, 2020"
+			},
+			{
+				id: 5,
+				owner: {
+					username: "Tom"
+				},
+				high_score: 32,
+				rank: 1,
+				difficulty: "hard",
+				date: "May 05, 2020"
+			},
+			{
+				id: 6,
+				owner: {
+					username: "Tim"
+				},
+				high_score: 48,
+				rank: 3,
+				difficulty: "hard",
+				date: "May 05, 2020"
+			}
+		]
+
+		let re = new RegExp(name, 'i')
+		const str = 'fee fi fo fum';
+		// const myArray = str.match(re);
+		// console.log(myArray);
+
+		// loop through each score object
+		for(let i = 0; i < scores.length; i++) {
+			// console.log(scores[i].owner.username);
+			if(scores[i].owner.username.match(re) !== null) {
+				console.log(scores[i]);
+			} else {
+				console.log("We didn't find what you're searching for");
+			}
+
+		}
+
+
+		// find a match
+		// push matches to a new array
+		// set scores on state with the new array
+		// if no matches is found, inform the user
+
+
 	}
 
 
@@ -172,7 +257,9 @@ class HighScore extends Component {
 					
 				</div>
 
-				<SearchForm search={this.search}/>
+				<SearchForm 
+
+					search={this.search}/>
 
 				<Select
 		        	labelId="demo-simple-select-label"
