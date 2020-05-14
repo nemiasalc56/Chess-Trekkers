@@ -14,8 +14,7 @@ class HighScore extends Component {
 		this.state = {
 			scores:'',
 			scoreListOpen: false,
-			showing: '',
-			search: ''
+			showing: ''
 		}
 	}
 
@@ -154,6 +153,10 @@ class HighScore extends Component {
 		this.getScores(e.target.value)
 	}
 
+	// search method
+	search = (name) => {
+		console.log("user is trying to search");
+	}
 
 
 	render() {
@@ -169,7 +172,7 @@ class HighScore extends Component {
 					
 				</div>
 
-				<SearchForm />
+				<SearchForm search={this.search}/>
 
 				<Select
 		        	labelId="demo-simple-select-label"

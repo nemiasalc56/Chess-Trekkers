@@ -12,22 +12,28 @@ class SearchForm extends Component{
 	}
 
 
-	// search method
+	// this method will allow us to update the state when the user is typing
 	handleChange = (e) => {
-		console.log("user is trying to search", e.target.value);
 
 		this.setState({
 			search: e.target.value
 		})
 	}
 
-	
+	handleSubmit = (e) => {
+		e.preventDefault()
+
+		if(this.state.search !== '') {
+			
+			this.props.search(this.state.search)
+		}
+	}
 
 
 	render() {
 		return(
 			<div>
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<input 
 						type="text"
 						value={this.state.search}
@@ -36,7 +42,7 @@ class SearchForm extends Component{
 						onChange={this.handleChange}
 						name="search"/>
 
-					<button>Search</button>
+					<button type="submit">Search</button>
 				</form>
 			</div>
 			)
