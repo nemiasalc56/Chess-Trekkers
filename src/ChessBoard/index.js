@@ -18,8 +18,14 @@ export default class ChessBoard extends Component {
 
 	render(){
 		const gameBoard = []
-		for(let i = 0; i <= 64; i++){
-			gameBoard.push(i)
+		// for(let i = 0; i <= 64; i++){
+		// 	gameBoard.push(i)
+		// }
+
+		for (let i = 0 ; i <= 7; i++){
+			for (let j = 0 ; j <= 7; j++){
+				gameBoard.push(`${i}${j}`)
+			}
 		}
 
 		const boardInner = []
@@ -61,6 +67,3 @@ export default class ChessBoard extends Component {
 	  )
 	}
 }
-
-
-	
