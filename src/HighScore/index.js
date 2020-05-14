@@ -3,6 +3,12 @@ import ScoreList from './ScoreList'
 import './HighScore.css'
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
+import InputBase from '@material-ui/core/InputBase';
+import { fade, makeStyles } from '@material-ui/core/styles';
 
 
 
@@ -14,7 +20,8 @@ class HighScore extends Component {
 		this.state = {
 			scores:'',
 			scoreListOpen: false,
-			showing: ''
+			showing: '',
+			search: ''
 		}
 	}
 
@@ -154,6 +161,10 @@ class HighScore extends Component {
 		this.getScores(e.target.value)
 	}
 
+	// search method
+	search = (name) => {
+		console.log("user is trying to search", name);
+	}
 
 	render() {
 
@@ -171,48 +182,25 @@ class HighScore extends Component {
 				<form>
 					<input 
 						type="text"
+						value={this.state.search}
 						placeholder="Search"
+						onChange={this.search}
 						name="search"/>
-					
+
+					<button>Search</button>
 				</form>
 
-				<div className="filter">
-					<div>
-						<label>All</label>
-						<input
-							type="checkbox"
-							name="all"
-							onChange={this.filterScores}
-						/>
-					</div>
+				<Select
+		        	labelId="demo-simple-select-label"
+		          	id="demo-simple-select"
+		          	value={this.state.showing}
+		          	onChange={this.filterScores}>
 
-					<div>
-						<label>Easy</label>
-						<input
-							type="checkbox"
-							name="easy"
-							onChange={this.filterScores}
-						/>
-					</div>
-
-					<div>
-						<label>Intermediate</label>
-						<input
-							type="checkbox"
-							name="intermediate"
-							onChange={this.filterScores}
-						/>
-					</div>
-
-					<div>
-						<label>Hard</label>
-						<input
-							type="checkbox"
-							name="hard"
-							onChange={this.filterScores}
-						/>
-					</div>
-				</div>
+					<MenuItem value="all">All</MenuItem>
+					<MenuItem value="easy">Easy</MenuItem>
+					<MenuItem value="intermediate">Intermediate</MenuItem>
+					<MenuItem value="hard">Hard</MenuItem>
+				</Select>
 
 				<div className="list-container">
 					{this.state.scoreListOpen?
@@ -220,18 +208,6 @@ class HighScore extends Component {
 					: null
 					}
 				</div>
-
-				<Select
-		        	labelId="demo-simple-select-label"
-		          	id="demo-simple-select"
-		          	value={this.state.showing}
-		          	onChange={this.filterScores}
-		        >
-					<MenuItem value="all">All</MenuItem>
-					<MenuItem value="easy">Easy</MenuItem>
-					<MenuItem value="intermediate">Intermediate</MenuItem>
-					<MenuItem value="hard">Hard</MenuItem>
-				</Select>
 				
 			</div>
 			)
