@@ -8,8 +8,8 @@ export default class App extends Component {
   constructor(){
   	super()
   	this.state = {
-  		homeOpen: true,
-  		startMatch: false,
+  		homeOpen: false,
+  		startMatch: true,
   		highscoreOpen: false,
   		aboutUsOpen: false
   	}
@@ -44,9 +44,7 @@ export default class App extends Component {
   render(){
   	return (
     <div className="App">
-    	{this.state.homeOpen ? <HomeComponent
-    		openChoices={this.openChoices}
-    		/> : null}
+    	{this.state.homeOpen ? <HomeComponent openChoices={this.openChoices}/> : null}
     	{this.state.startMatch ? <ChessBoard/> : null}
     	{this.state.highscoreOpen ? <ChessBoard/> : null}
     	{this.state.aboutUsOpen ? <ChessBoard/> : null}
