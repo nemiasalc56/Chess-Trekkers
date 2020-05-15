@@ -20,7 +20,7 @@ export default class ChessBoard extends Component {
 					['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
 					['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
 				]
-		}
+		} 
 	}
 	updateBoard = (board, originY, originX, destY, destX) => {
 		board[destY][destX] = board[originY][originX]
@@ -31,18 +31,18 @@ export default class ChessBoard extends Component {
 	onClick = (e) => {
 		console.log(e.target.parentNode.id, 'here is the target.parentNode.id')
 		console.log(e.target.id, 'here is the target.id')
-
+		
+		const y = e.target.id[3] || e.target.parentNode.id[3]
+		const x = e.target.id[4] || e.target.parentNode.id[4]
 		if (!this.state.originY){
-			const y = e.target.parentNode.id[3]
-			const x = e.target.parentNode.id[4]
+			// const y = e.target.parentNode.id[3]
+			// const x = e.target.parentNode.id[4]
 			this.setState({
 				originY: y,
 				originX: x
 			})
 		}
 		else{
-			const y = e.target.id[3]
-			const x = e.target.id[4]
 			const newBoard = this.updateBoard(this.state.board, this.state.originY, this.state.originX, y, x)
 			this.setState({
 				originY: null,
