@@ -69,3 +69,14 @@
   border: 1px red solid;
   height: 30px;
 }
+
+.red-circle {
+  border-radius: 50%;
+  background-color: rgb(228, 57, 57);
+  height: 30px;
+}
+.blue-circle {
+  border-radius: 50%;
+  background-color: rgb(51, 51, 168);
+  height: 30px;
+}

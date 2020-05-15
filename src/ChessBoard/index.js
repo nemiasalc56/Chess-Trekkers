@@ -7,7 +7,17 @@ export default class ChessBoard extends Component {
 		super(props)
 
 		this.state = { 
-			movement: []
+			movement: [],
+			board: [
+					['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+					['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+					['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
+					['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
+				]
 
 		}
 	}
@@ -33,8 +43,16 @@ export default class ChessBoard extends Component {
 			boardInner.push(i)
 		}
 
+		const finalBoard = gameBoard.map(id => {
+			const element = this.state.board[id[0]][id[1]]
+			return (
+        <div onClick={this.onClick} key={id} className="box" id={"sq#" + id}>
+          {element === " " ? " " : element === "X" ? <div className="red-circle"></div> : <div className="blue-circle"></div>}
+        </div>
+      );
+		})
 
-	  return (
+	  	return (
 	    	<div className="board">
 				<div className="top">
 			    	<div className="board-inner">
@@ -47,11 +65,7 @@ export default class ChessBoard extends Component {
 			    	</div>
 			  	</div>
 
-			  	{gameBoard.map(id => {
-			  		return <div onClick={this.onClick} key={id} 
-			  		className='box' 
-			  		id={'sq#'+id}></div>
-			  	})}
+				{finalBoard}
 
 				<div className="bottom">
 			    	<div className="board-inner">
