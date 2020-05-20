@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import ChessBoard from './ChessBoard';
 import HomeComponent from './HomeComponent'
+import HighScore from './HighScore'
+
 
 
 export default class App extends Component {
@@ -44,10 +46,16 @@ export default class App extends Component {
   render(){
   	return (
     <div className="App">
-    	{this.state.homeOpen ? <HomeComponent openChoices={this.openChoices}/> : null}
-    	{this.state.startMatch ? <ChessBoard/> : null}
-    	{this.state.highscoreOpen ? <ChessBoard/> : null}
-    	{this.state.aboutUsOpen ? <ChessBoard/> : null}
+    	<React.StrictMode>
+        {this.state.homeOpen ? <HomeComponent openChoices={this.openChoices}/> : null}
+      	{this.state.startMatch ? <ChessBoard/> : null}
+      	{this.state.highscoreOpen ? <ChessBoard/> : null}
+      	{this.state.aboutUsOpen ? <ChessBoard/> : null}
+    	</React.StrictMode>
+
+    	Chess Trekkers
+    		
+    	<HighScore />
     </div>
   )
   } 
