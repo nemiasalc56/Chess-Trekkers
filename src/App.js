@@ -7,7 +7,10 @@ function App() {
   return (
     <div className="App">
     	Chess Trekkers
-    	<ChessBoard />
+    	<React.StrictMode>
+    		<ChessBoard />
+    		
+    	</React.StrictMode>
     	<HighScore />
     </div>
   )

@@ -3,7 +3,7 @@ import ScoreList from './ScoreList'
 import SearchForm from './SearchForm'
 import './HighScore.css'
 import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import { MenuItem } from '@material-ui/core';
 
 
 
@@ -218,21 +218,26 @@ class HighScore extends Component {
 			}
 		]
 
+		// this is will allow us to look for matches
 		let re = new RegExp(name, 'i')
-		const str = 'fee fi fo fum';
-		// const myArray = str.match(re);
-		// console.log(myArray);
+		
+
+		const filteredScore = []
 
 		// loop through each score object
 		for(let i = 0; i < scores.length; i++) {
 			// console.log(scores[i].owner.username);
 			if(scores[i].owner.username.match(re) !== null) {
 				console.log(scores[i]);
+				filteredScore.push(scores[i])
+
 			} else {
 				console.log("We didn't find what you're searching for");
 			}
 
 		}
+
+		this.setState({scores: filteredScore})
 
 
 		// find a match
@@ -247,6 +252,7 @@ class HighScore extends Component {
 	render() {
 
 		return(
+			
 			<div className="highscore-container">
 				
 				<h2>HighScore Container</h2>
@@ -262,8 +268,8 @@ class HighScore extends Component {
 					search={this.search}/>
 
 				<Select
-		        	labelId="demo-simple-select-label"
-		          	id="demo-simple-select"
+		        	labelId="simple-select-label"
+		          	id="simple-select"
 		          	value={this.state.showing}
 		          	onChange={this.filterScores}>
 
@@ -281,6 +287,7 @@ class HighScore extends Component {
 				</div>
 				
 			</div>
+
 			)
 
 	}
