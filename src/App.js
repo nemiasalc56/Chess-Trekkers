@@ -46,16 +46,16 @@ export default class App extends Component {
   render(){
   	return (
     <div className="App">
+    	<h2>Chess Trekkers</h2>
     	<React.StrictMode>
         {this.state.homeOpen ? <HomeComponent openChoices={this.openChoices}/> : null}
       	{this.state.startMatch ? <ChessBoard/> : null}
-      	{this.state.highscoreOpen ? <ChessBoard/> : null}
-      	{this.state.aboutUsOpen ? <ChessBoard/> : null}
+      	{this.state.highscoreOpen ? <HighScore/> : null}
+
     	</React.StrictMode>
 
-    	Chess Trekkers
     		
-    	<HighScore />
+
     </div>
   )
   } 
