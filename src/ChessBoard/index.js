@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './index.css';
+import BottomBoard from './BottomBoard'
 
 
 export default class ChessBoard extends Component {
@@ -88,6 +89,7 @@ export default class ChessBoard extends Component {
 		})
 	  	return (
 	    	<div className="board">
+			<BottomBoard/>    	
 				<div className="top">
 			    	<div className="board-inner">
 				    	{boardInner.map(id => {
