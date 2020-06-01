@@ -15,11 +15,7 @@ export default class ChessBoard extends Component {
 					['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
 					['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
 					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-					['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
-					['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O']
+					[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 				]
 		} 
 	}
@@ -27,6 +23,11 @@ export default class ChessBoard extends Component {
 		board[destY][destX] = board[originY][originX]
 		board[originY][originX] = " "
 		return board
+	}
+
+	addBottom = (bottomBoard) => {
+		this.state.board.push(bottomBoard)
+		console.log(this.state.board, 'here we are in addBottom')
 	}	
 	
 	onClick = (e) => {
@@ -58,11 +59,8 @@ export default class ChessBoard extends Component {
 	render(){
 		console.table(this.state.board)
 		const gameBoard = []
-		// for(let i = 0; i <= 64; i++){
-		// 	gameBoard.push(i)
-		// }
 
-		for (let i = 0 ; i <= 7; i++){
+		for (let i = 0 ; i <= 3; i++){
 			for (let j = 0 ; j <= 7; j++){
 				gameBoard.push(`${i}${j}`)
 			}
@@ -76,6 +74,7 @@ export default class ChessBoard extends Component {
 		const finalBoard = gameBoard.map(id => {
 			const element = this.state.board[id[0]][id[1]]
 			return (
+
 				<div onClick={this.onClick} key={id} className="box" id={"sq#" + id}>
 					{
 						element === " " ? " " 
@@ -89,7 +88,6 @@ export default class ChessBoard extends Component {
 		})
 	  	return (
 	    	<div className="board">
-			<BottomBoard/>    	
 				<div className="top">
 			    	<div className="board-inner">
 				    	{boardInner.map(id => {
@@ -103,6 +101,10 @@ export default class ChessBoard extends Component {
 
 				{finalBoard}
 
+				<BottomBoard 
+					board={this.state.board}
+					addBottom={this.addBottom}
+					/>
 				<div className="bottom">
 			    	<div className="board-inner">
 				    	{boardInner.map(id => {
